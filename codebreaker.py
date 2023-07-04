@@ -17,16 +17,16 @@ class Codebreaker:
         print('Intenta adivinar el número oculto!')
 
         while True:
-            print(f'Intento número {attempt}:')
+            print(f'Intento número {attempt}: ')
             number = input('')
             response = self.guess_number(number)
             print(f'Respuesta: {response}')
 
-            attempt += 1
-
             if response == 'XXXX':
-                print('¡Felicitaciones! Has ganado en {attempt} intentos')
+                print(f'¡Felicitaciones! Has ganado en {attempt} intentos')
                 return attempt
 
+            attempt += 1
+
     def guess_number(self, number=None):
-        pass
+        return 'XXXX'

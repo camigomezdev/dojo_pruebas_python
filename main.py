@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     while action == '1':
         print('Juagdor 1')
-        hidden_number = input('Escriba el número oculto:')
+        hidden_number = input('Escriba el número oculto: ')
         codebreaker.set_hidden_number(hidden_number)
         clean()
         print('Juagdor 2')
@@ -26,12 +26,13 @@ if __name__ == '__main__':
 
         print('--------------------')
         print('Juagdor 2')
-        hidden_number = input('Escriba el número oculto:')
+        hidden_number = input('Escriba el número oculto: ')
         codebreaker.set_hidden_number(hidden_number)
         clean()
         print('Juagdor 1')
         attempt_player_1 = codebreaker.play()
 
+        print('--------------------')
         if attempt_player_1 > attempt_player_2:
             print('El jugador 1 es el ganador')
         elif attempt_player_1 < attempt_player_2:
