@@ -59,7 +59,7 @@ pytest -v
 Coverage:
 
 ``` bash
-coverage run codebreaker.py
+coverage run --omit='tests/*' -m pytest
 coverage report
 coverage html
 ```
