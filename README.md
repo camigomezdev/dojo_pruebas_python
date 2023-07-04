@@ -53,14 +53,12 @@ pip install -r requirements.txt
 
 pytest
 ``` bash
-pip install pytest
 pytest -v
 ```
 
 Coverage:
 
 ``` bash
-pip install coverage
 coverage run codebreaker.py
 coverage report
 coverage html
