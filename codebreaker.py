@@ -22,6 +22,8 @@ class Codebreaker:
 
         try:
             self.is_valid_len_number(hidden_numer)
+            self.is_a_number(hidden_numer)
+            self.does_not_contain_repeated_digits(hidden_numer)
         except Exception as e:
             raise e
 
@@ -54,11 +56,24 @@ class Codebreaker:
                 guess_position += 'X'
             elif digit in self.hidden_number:
                 guess_digit += '_'
-        
+
         return guess_position + guess_digit
 
     def is_valid_len_number(self, number):
         if len(number) != 4:
             raise Exception('El numero debe tener 4 cifras')
-    
+
+        return True
+
+    def is_a_number(self, number):
+        if not number.isdecimal():
+            raise Exception('Debes introducir un número entero de 4 cifras')
+
+        return True
+
+    def does_not_contain_repeated_digits(self, number):
+        for digit in number:
+            if number.count(digit) > 1:
+                raise Exception('El número no puede contener dígitos \
+repetidos')
         return True
