@@ -7,34 +7,34 @@ from codebreaker import Codebreaker
 
 @pytest.fixture
 def codebreaker_instance():
-     return Codebreaker()
+    return Codebreaker()
 
 
 def test_set_hidden_number_by_user(codebreaker_instance):
-     codebreaker_instance.set_hidden_number('1234')
+    codebreaker_instance.set_hidden_number('1234')
 
-     assert codebreaker_instance.hidden_number == '1234'
+    assert codebreaker_instance.hidden_number == '1234'
 
 
 def test_set_hidden_number_no_valid_len(codebreaker_instance):
-     with pytest.raises(Exception) as e:
-          codebreaker_instance.set_hidden_number('123')
+    with pytest.raises(Exception) as e:
+        codebreaker_instance.set_hidden_number('123')
 
-     assert 'El numero debe tener 4 cifras' in str(e.value)
+    assert 'El numero debe tener 4 cifras' in str(e.value)
 
 
 def test_set_random_number(mocker, codebreaker_instance):
-     mocker.patch('codebreaker.Codebreaker._get_random_number',
-                  return_value='1234')
-     codebreaker_instance.set_hidden_number()
+    mocker.patch('codebreaker.Codebreaker._get_random_number',
+                 return_value='1234')
+    codebreaker_instance.set_hidden_number()
 
-     assert codebreaker_instance.hidden_number == '1234'
+    assert codebreaker_instance.hidden_number == '1234'
 
 
 def test_get_random_number(codebreaker_instance, mocker):
-     mocker.patch('random.sample', return_value=['0', '9', '8', '7'])
-     number = codebreaker_instance._get_random_number()
-     assert number == '0987'
+    mocker.patch('random.sample', return_value=['0', '9', '8', '7'])
+    number = codebreaker_instance._get_random_number()
+    assert number == '0987'
 
 
 @pytest.mark.parametrize(
@@ -50,10 +50,11 @@ def test_get_random_number(codebreaker_instance, mocker):
     ]
 )
 def test_guess_number(codebreaker_instance, entry, expected):
-     codebreaker_instance.set_hidden_number('1234')
-     response = codebreaker_instance.guess_number(entry)
+    codebreaker_instance.set_hidden_number('1234')
+    response = codebreaker_instance.guess_number(entry)
 
-     assert response == expected
+    assert response == expected
+
 
 @pytest.mark.parametrize(
     "entry",
@@ -63,13 +64,13 @@ def test_guess_number(codebreaker_instance, entry, expected):
     ]
 )
 def test_is_valid_len_number_error(codebreaker_instance, entry):
-     with pytest.raises(Exception) as e:
-          codebreaker_instance.is_valid_len_number(entry)
-     
-     assert 'El numero debe tener 4 cifras' in str(e.value)
+    with pytest.raises(Exception) as e:
+        codebreaker_instance.is_valid_len_number(entry)
+
+    assert 'El numero debe tener 4 cifras' in str(e.value)
 
 
 def test_is_valid_len_number(codebreaker_instance):
-     result = codebreaker_instance.is_valid_len_number('1234')
+    result = codebreaker_instance.is_valid_len_number('1234')
 
-     assert result
+    assert result
